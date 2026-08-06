@@ -21,7 +21,10 @@ public class Producto {
 
     private Double precio;
     private Integer stock;
-    private String categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 
     @Column(name = "imagen_url")
     private String imagenUrl;
@@ -66,11 +69,11 @@ public class Producto {
         this.stock = stock;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 

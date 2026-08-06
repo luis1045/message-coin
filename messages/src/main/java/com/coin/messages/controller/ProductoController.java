@@ -22,6 +22,15 @@ public class ProductoController {
         return service.listar();
     }
 
+    @GetMapping("/{id}")
+    public Producto obtener(@PathVariable Long id){
+        return service.obtener(id);
+    }
+    @PutMapping("/{id}")
+    public Producto actualizar(@PathVariable Long id, @RequestBody Producto producto){
+        return service.actualizar(id, producto);
+    }
+
     @PostMapping
     public Producto guardar(@RequestBody Producto p) {
         return service.guardar(p);
