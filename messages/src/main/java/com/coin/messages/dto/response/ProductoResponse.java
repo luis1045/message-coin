@@ -1,35 +1,24 @@
-package com.coin.messages.model;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-
-import jakarta.persistence.*;
+package com.coin.messages.dto.response;
 
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "producto")
-public class Producto {
+public class ProductoResponse {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
 
-    @Column(columnDefinition = "TEXT")
     private String descripcion;
 
     private BigDecimal precio;
+
     private Integer stock;
 
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-
-    @Column(name = "imagen_url")
     private String imagenUrl;
+
+    private Long categoriaId;
+
+    private String categoriaNombre;
 
     public Long getId() {
         return id;
@@ -71,14 +60,6 @@ public class Producto {
         this.stock = stock;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
     public String getImagenUrl() {
         return imagenUrl;
     }
@@ -87,6 +68,19 @@ public class Producto {
         this.imagenUrl = imagenUrl;
     }
 
-    // getters y setters
+    public Long getCategoriaId() {
+        return categoriaId;
+    }
 
+    public void setCategoriaId(Long categoriaId) {
+        this.categoriaId = categoriaId;
+    }
+
+    public String getCategoriaNombre() {
+        return categoriaNombre;
+    }
+
+    public void setCategoriaNombre(String categoriaNombre) {
+        this.categoriaNombre = categoriaNombre;
+    }
 }

@@ -1,5 +1,7 @@
 package com.coin.messages.controller;
 
+import com.coin.messages.dto.request.ProductoRequest;
+import com.coin.messages.dto.response.ProductoResponse;
 import com.coin.messages.model.Producto;
 import com.coin.messages.service.ProductoService;
 import org.springframework.web.bind.annotation.*;
@@ -18,21 +20,21 @@ public class ProductoController {
     }
 
     @GetMapping
-    public List<Producto> listar() {
+    public List<ProductoResponse> listar() {
         return service.listar();
     }
 
     @GetMapping("/{id}")
-    public Producto obtener(@PathVariable Long id){
+    public ProductoResponse obtener(@PathVariable Long id){
         return service.obtener(id);
     }
     @PutMapping("/{id}")
-    public Producto actualizar(@PathVariable Long id, @RequestBody Producto producto){
+    public ProductoResponse actualizar(@PathVariable Long id, @RequestBody ProductoRequest producto){
         return service.actualizar(id, producto);
     }
 
     @PostMapping
-    public Producto guardar(@RequestBody Producto p) {
+    public ProductoResponse guardar(@RequestBody ProductoRequest p) {
         return service.guardar(p);
     }
 

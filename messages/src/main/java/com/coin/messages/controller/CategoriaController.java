@@ -1,5 +1,7 @@
 package com.coin.messages.controller;
 
+import com.coin.messages.dto.request.CategoriaRequest;
+import com.coin.messages.dto.response.CategoriaResponse;
 import com.coin.messages.model.Categoria;
 import com.coin.messages.service.CategoriaService;
 import org.springframework.web.bind.annotation.*;
@@ -16,19 +18,19 @@ public class CategoriaController {
     }
 
     @GetMapping
-    public List<Categoria> listar(){
+    public List<CategoriaResponse> listar(){
         return  service.listar();
     }
     @GetMapping("/{id}")
-    public Categoria obtener(@PathVariable Long id){
+    public CategoriaResponse obtener(@PathVariable Long id){
         return service.obtener(id);
     }
     @PostMapping
-    public Categoria guardar(@RequestBody Categoria categoria){
+    public CategoriaResponse guardar(@RequestBody CategoriaRequest categoria){
         return  service.guardar(categoria);
     }
     @PutMapping("/{id}")
-    public Categoria actualziar(@PathVariable Long id, @RequestBody Categoria categoria) {
+    public CategoriaResponse actualziar(@PathVariable Long id, @RequestBody CategoriaRequest categoria) {
         return service.actualziar(id,categoria);
     }
     @DeleteMapping("/{id}")
